@@ -30,13 +30,18 @@ var initCarousel = function (carouselId, photos) {
   $("#" + carouselId + " .carousel-indicators").text("");
   $("#" + carouselId + " .carousel-inner").text("");
   for (var i = 0; i < photos.length; i++) {
-    $("#" + carouselId + " .carousel-indicators")
-      .append("<li data-target='#" + carouselId + "' data-slide-to=" + i + "></li>");
-    $("#" + carouselId + " .carousel-inner")
-      .append("<div class='item slides'><img src='" + photos[i].url + "'></img></div>");
+    if (i === 0) {
+      $("#" + carouselId + " .carousel-indicators")
+        .append("<li class='active' data-target='#" + carouselId + "' data-slide-to='0'></li>");
+      $("#" + carouselId + " .carousel-inner")
+        .append("<div class='item active'><img src='" + photos[i].url + "'></img></div>");
+    } else {
+      $("#" + carouselId + " .carousel-indicators")
+        .append("<li data-target='#" + carouselId + "' data-slide-to='" + i + "'></li>");
+      $("#" + carouselId + " .carousel-inner")
+        .append("<div class='item'><img src='" + photos[i].url + "'></img></div>");
+    }
   }
-  $("#" + carouselId + " .item").first().addClass('active');
-  $("#" + carouselId + ".carousel-indicators > li").first().addClass('active');
   $("#" + carouselId).carousel();
 }
 
@@ -201,7 +206,7 @@ var handleClientLoad = function(id) {
     if (!users[hotelID]) {
       users[hotelID] = [];
     }
-    
+
     users[hotelID].push(id);
     showUsers(hotelID);
   }
