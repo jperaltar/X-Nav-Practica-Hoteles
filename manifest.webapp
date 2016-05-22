@@ -1,0 +1,21 @@
+{
+  "name": "Hoteles",
+  "description": "Alojamientos en Madrid",
+  "launch_path": "/index.html",
+  "activities": {
+    "share": {
+      "href": "index.html",
+      "disposition": "window"
+    }
+  },
+  "developer": {
+    "name": "Joel Peralta Rodriguez",
+    "url": ""
+  },
+  "default_locale": "es",
+  "permissions": {
+    "storage": {
+      "description": "localStorage used in this app"
+    }
+  }
+}

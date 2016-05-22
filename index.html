@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html manifest="/cache.manifest">
+  <head>
+    <meta charset="utf-8">
+    <title>Hoteles</title>
+    <link rel="stylesheet" href="/css/jquery-ui.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/libs/leaflet/leaflet.css" />
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body>
+    <div class="page-header" id="header">
+      <h1>Alojamientos en Madrid</h1>
+    </div>
+    <div id="tabs">
+      <ul>
+        <li id="link-1"><a href="#principal">Principal</a></li>
+        <li id="link-2"><a href="#collections">Colecciones</a></li>
+        <li id="link-3"><a href="#clients">Clientes</a></li>
+      </ul>
+      <div id="lists" class="row">
+        <div class="card col-md-6 col-sm-6 col-xs-6" id="hotels-list">
+          <h3>Lista de hoteles</h3>
+          <div class="list">
+            <button id="get-hotels">Carga hoteles</button>
+          </div>
+        </div>
+        <div class="card col-md-6 col-sm-6 col-xs-6" id="collection">
+          <h3>Coleccion</h3>
+          <p class="message">
+            Tienes que seleccionar una coleccion para poder guardar
+            hoteles en ella.
+          </p>
+          <ul class="list" style="display: none"></ul>
+        </div>
+      </div>
+      <div id="principal">
+        <div class="row map-row">
+          <div class="card col-md-12 col-sm-12 col-xs-12" id="map"></div>
+        </div>
+      </div>
+      <div id="collections">
+        <div class="row">
+          <div class="card col-md-12 col-sm-12 col-xs-12" id="collections-card">
+            <h3>Lista de colecciones</h3>
+            <input id="collections-form" type="text" name="collection" placeholder="Collection name">
+            <hr>
+            <ul class="list" id="collections-list"></ul>
+          </div>
+        </div>
+      </div>
+      <div id="clients">
+        <div class="row">
+          <div class="card col-md-6 col-sm-6 col-xs-6" id="add-client">
+            <h3>Añadir cliente</h3>
+            <p>
+              Introduce el id de Google+ del cliente a añadir:
+            </p>
+            <input id="clientForm" type="text" name="client" placeholder="Google+ ID">
+            <hr>
+            <p>
+              Para poder agregar clientes primero hay que seleccionar un hotel.
+            </p>
+          </div>
+          <div class="card col-md-6 col-sm-6 col-xs-6" id="google-clients">
+            <h3>Clientes Google+</h3>
+            <ul class="list" id="google-clients-list"></ul>
+            <button id="get-clients">Carga clientes</button>
+          </div>
+        </div>
+      </div>
+      <div id="profile" class="row">
+        <div class="hotel-profile">
+          <div id="hotel-profile" class="card col-md-6 col-sm-6 col-xs-6 profile">
+            <h3>Perfil del hotel</h3>
+            <p></p>
+          </div>
+          <div id="myCarousel" class="card col-md-6 col-sm-6 col-xs-6 carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators"></ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox"></div>
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="form row">
+        <span>¿Quieres guardar tus datos?</span>
+        <button type="button" id="save-data">Haz click</button>
+        <div id="github-form" style="display: none">
+          <h3>Guarda datos en Github</h3>
+          <form>
+            <input type="text" id="git-user" placeholder="usuario">
+            <input type="text" id="git-repo" placeholder="repositorio">
+            <input type="text" id="git-file" placeholder="fichero">
+            <input type="button" id="github-submit" value="Guardar datos">
+          </form>
+        </div>
+      </div>
+      <div class="form row">
+        <span>¿Quieres cargar tus datos?</span>
+        <button type="button" id="load-data">Haz click</button>
+        <div id="github-form-load" style="display: none">
+          <h3>Cargar datos de Github</h3>
+          <form>
+            <input type="text" id="git-user-load" placeholder="usuario">
+            <input type="text" id="git-repo-load" placeholder="repositorio">
+            <input type="text" id="git-file-load" placeholder="fichero">
+            <input type="button" id="github-submit-load" value="Cargar datos">
+          </form>
+        </div>
+      </div>
+      <div id="flickr" class="row card">
+        <h3>Fotos relacionadas en Flickr</h3>
+        <hr>
+        <h3 class="message">
+          No hay fotos relacionadas
+        </h3>
+        <div id="flickr-photos"></div>
+      </div>
+    </div>
+    <script src="/js/jquery-1.12.4.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/libs/leaflet/leaflet.js"></script>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+    <script src="/js/hello.all.min.js" charset="utf-8"></script>
+    <script src="/js/github.js" charset="utf-8"></script>
+    <script src="/js/utf_8.js" charset="utf-8"></script>
+    <script src="/js/hotels.js" charset="utf-8"></script>
+  </body>
+</html>
