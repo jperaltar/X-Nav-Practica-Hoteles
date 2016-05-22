@@ -1,7 +1,7 @@
 # X-Nav-Practica-Hoteles
 Repositorio para la práctica final de DAT/AT. Curso 2015-2016
 
-## Joel Peralta Rodriguez
+## Joel Peralta Rodríguez
 ### Tecnologías de las Telecomunicaciones
 
 ### Usuario Github: jperaltar
